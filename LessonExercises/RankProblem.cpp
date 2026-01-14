@@ -19,4 +19,22 @@ int main() {
         cin>>games[i].first>>games[i].second;
     }
 
+    for(int i = 0; i<m; ++i){
+        auto it  = find(teams.begin(),teams.end(),games[i].first);
+        auto it2 = find(teams.begin(),teams.end(),games[i].second);
+        if(it != teams.end() && it2 != teams.end()){
+            size_t idxWin = it - teams.begin();
+            size_t idxLose = it2 - teams.begin();
+            if(idxLose == idxWin+1)continue;
+            string losingTeam = teams[idxLose];
+            teams.erase(it2);
+            if (idxLose < idxWin) --idxWin;
+            teams.insert(it,losingTeam);
+        }
+    }
+
+    for(int i = 0; i<teams.size(); ++i){
+        cout<<teams[i]<<" ";
+    }
+    return 0;
 }
