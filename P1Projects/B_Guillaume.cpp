@@ -1,10 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-#include <iostream>
-#include <string>
-
 int main() {
     int n;
     cin >> n;
