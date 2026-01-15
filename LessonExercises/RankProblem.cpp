@@ -33,7 +33,7 @@ int main() {
         }
     }
 
-    for(int i = 0; i<teams.size(); ++i){
+    for(int i = 0; i<n; ++i){
         cout<<teams[i]<<" ";
     }
     return 0;
