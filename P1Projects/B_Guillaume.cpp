@@ -10,19 +10,16 @@ int main() {
 
     long long best_g = (s.back() == 'G') ? 1 : 0;
     long long best_a = (s.back() == 'A') ? 1 : 0;
-    long long best_d = (s.back() == 'D') ? 1 : 0;
 
-    long long g = best_g, a = best_a, d = best_d;
+    long long g = best_g, a = best_a;
 
     for (int i = n - 2; i >= 0; --i) {
         if (s[i] == 'G') ++g;
         else if (s[i] == 'A') ++a;
-        else if (s[i] == 'D') ++d;
 
         if ((best_a + best_g) == 0 || (g * (best_a + best_g) > best_g * (a + g))) {
             best_a = a;
             best_g = g;
-            best_d = d;
         }
     }
 

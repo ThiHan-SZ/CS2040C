@@ -25,14 +25,12 @@ int main() {
         if(it != teams.end() && it2 != teams.end()){
             size_t idxWin = it - teams.begin();
             size_t idxLose = it2 - teams.begin();
-            if(idxLose == idxWin+1)continue;
+            if (idxWin < idxLose) continue;
             string losingTeam = teams[idxLose];
-            teams.erase(it2);
-            if (idxLose < idxWin) --idxWin;
-            teams.insert(it,losingTeam);
+            teams.erase(teams.begin() + idxLose);
+            teams.insert(teams.begin() + idxWin, losingTeam);
         }
     }
-
     for(int i = 0; i<n; ++i){
         cout<<teams[i]<<" ";
     }
