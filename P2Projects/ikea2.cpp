@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+long long sum(size_t left, size_t right, const vector<pair<long long, int>>& a) {
+    long long sum = 0;
+    for (size_t i = left; i < right; ++i) {
+        sum += a[i].first;
+    }
+    return sum;
+}
 int main() {
     long long k, n;
     cin >> k >> n;
@@ -22,20 +28,17 @@ int main() {
     long long take1 = n / k;
     long long take2 = (n + k - 1) / k;
 
-    long long maxWeight = accumulate(a.begin(), a.begin() + take2, 0LL,
-                                [](long long s, const auto& p) { return s + p.first; });
+    long long maxWeight = sum(0,take2,a);
     long long right = min<long long>(n, take1 + take2);
-    long long nextWeight = accumulate(a.begin() + take2, a.begin() + right, 0LL,
-                                [](long long s, const auto& p) { return s + p.first; });
-    
+    long long nextWeight = sum(take2,right,a);
+
     long long take, total;
     if (maxWeight < nextWeight) {
         take = take2;
         total = maxWeight;
     } else {
         take = take1;
-        total = accumulate(a.begin(), a.begin() + take, 0LL,
-                            [](long long s, const auto& p) { return s + p.first; });
+        total = sum(0,take,a);
     }
 
     vector<string> ans;
