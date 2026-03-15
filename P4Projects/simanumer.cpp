@@ -17,7 +17,8 @@ int main() {
 
     unordered_map<string, long> prefixMap;
     for (size_t i = 0; i < n; i++) {
-        for(size_t j = 0; j < phoneRecords[i].length(); j++) {
+        size_t length = phoneRecords[i].length();
+        for(size_t j = 0; j < length; j++) {
             string prefix = phoneRecords[i].substr(0, j + 1);
             prefixMap[prefix] += 1;
         }
