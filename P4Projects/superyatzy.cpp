@@ -11,8 +11,14 @@ int main() {
         freq[x - 1]++;
     }
     long minimumFreq = n - m; //The minimum frequency of any one number for the flips provided to create winning scenario
-    auto it = find(freq.begin(), freq.end(), minimumFreq); //This will find the minimum frequency of any one number
-    if (it != freq.end()) {
+    bool possible = false;
+    for (int f : freq){
+        if(f >= minimumFreq){
+            possible = true;
+            break;
+        }
+    }
+    if (possible) {
         cout << "Ja" << endl;
     }
     else {
