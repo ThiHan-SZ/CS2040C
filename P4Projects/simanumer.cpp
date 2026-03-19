@@ -2,6 +2,7 @@
 using namespace std;
 
 int main() {
+    cin.tie(nullptr);
     size_t n = 0;
     cin >> n;
     vector<string> phoneRecords(n);
